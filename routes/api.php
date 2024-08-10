@@ -15,16 +15,34 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::group([
+// Route::group([
 
-    'middleware' => 'api',
-    'prefix' => 'auth'
+//     'middleware' => 'api',
+//     'prefix' => 'auth'
 
-], function ($router) {
-    Route::post('register', [AuthController::class],'register');
-    Route::post('login', [AuthController::class],'login');
-    Route::post('logout', [AuthController::class],'logout');
-    Route::post('refresh', [AuthController::class],'refresh');
-    Route::post('me', [AuthController::class],'me');
+// ], function ($router) {
+//     Route::post('register', [AuthController::class,'register']);
+//     Route::post('login', [AuthController::class,'login']);
+//     Route::post('logout', [AuthController::class,'logout']);
+//     Route::post('refresh', [AuthController::class,'refresh']);
+//     Route::post('me', [AuthController::class,'me']);
+
+// });
+Route::group(['middleware'=>'api','prefix'=>'auth'],function ($router)
+{
+    Route::post('register', [AuthController::class,'register']);
+    Route::post('login', [AuthController::class,'login']);
+    Route::post('logout', [AuthController::class,'logout']);
+    Route::post('refresh', [AuthController::class,'refresh']);
+    Route::post('me', [AuthController::class,'me']);
 
 });
+
+// Route::get('/', function()
+// {
+//     return response()->json([
+//         'message'=>'Welcome to the jungle'
+//     ]);
+// });
+
+// Route::post('/home',[ HomeController::class, 'index']);
